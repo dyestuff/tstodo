@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
+    "module": "NodeNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
@@ -9,7 +11,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*"
