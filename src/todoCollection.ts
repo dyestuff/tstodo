@@ -1,22 +1,22 @@
 import { TodoItem } from "./todoItem.js"
 
 export class TodoCollection {
-  private NextId: number = 1;
+  private nextId: number = 1;
 
-  constuctor (public userName: string,
-              public todoItems: TodoItem[]) {
+  constructor (public userName: string,
+              public todoItems: TodoItem[] = []) {
 
   }
 
   addTodo(task: string): number {
     while (this.getTodoById(this.nextId)) {
-      this.NextId++
+      this.nextId++
     }
     this.todoItems.push(new TodoItem(this.nextId, task))
     return this.nextId
 }
 
-getTodoById(id: number): TodoItem {
+getTodoById(id: number): TodoItem | undefined {
     return this.todoItems.find(item => item.id === id)
 }
 
