@@ -15,4 +15,3 @@ let newId: number = collection.addTodo("Go for something")
 let todoItem: TodoItem | undefined = collection.getTodoById(newId)
 todoItem.printDetails()
 //collection.addTodo(todoItem)
-//testing
