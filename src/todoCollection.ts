@@ -8,7 +8,7 @@ export class TodoCollection {
 	  todoItems.forEach(item => this.itemMap.set(item.id, item));
   }
   
-   addTodo(task: string): number {
+  addTodo(task: string): number {
     while (this.getTodoById(this.nextId)) {
       this.nextId++
     }
@@ -20,10 +20,21 @@ getTodoById(id: number): TodoItem | undefined {
     return this.itemMap.get(id);
 }
 
-markComplete(id: number, complete: boolean) {
+  getTodoItems(includeComplete: boolean): TodoItem[] {
+    return [...this.itemMap.values()]
+      .filter(item => includeComplete || !item.complete);
+  } 
+  markComplete(id: number, complete: boolean) {
     const todoItem = this.getTodoById(id)
   if (todoItem) {
-    	todoItem.complete = complete
+    	todoItem.complete = complete;
   	}
-    }
+  }
+  removeComplete() {
+  this.itemMap.forEach(item => {
+    if (item.complete) {
+     this.itemMap.delete(item.id) 
+      }
+    })
+  }
 }
